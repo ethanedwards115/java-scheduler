@@ -1,4 +1,3 @@
-import java.util.Date;
 import java.util.ArrayList;
 
 /**
@@ -8,51 +7,51 @@ import java.util.ArrayList;
  */
 public class Appointment {
 	
-	private Date date;
-	private Date startTime;
-	private Date endTime;
+	private String date;
+	private String startTime;
+	private String endTime;
 	private String type;
 	private ArrayList<HealthProfessional> assignedHPs;
-	
+
 	/**
 	 * @return the date
 	 */
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	
+
 	/**
 	 * @param date the date to set
 	 */
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
-	
+
 	/**
 	 * @return the startTime
 	 */
-	public Date getStartTime() {
+	public String getStartTime() {
 		return startTime;
 	}
-	
+
 	/**
 	 * @param startTime the startTime to set
 	 */
-	public void setStartTime(Date startTime) {
+	public void setStartTime(String startTime) {
 		this.startTime = startTime;
 	}
-	
+
 	/**
 	 * @return the endTime
 	 */
-	public Date getEndTime() {
+	public String getEndTime() {
 		return endTime;
 	}
-	
+
 	/**
 	 * @param endTime the endTime to set
 	 */
-	public void setEndTime(Date endTime) {
+	public void setEndTime(String endTime) {
 		this.endTime = endTime;
 	}
 	
@@ -88,7 +87,13 @@ public class Appointment {
 	 * the clone method makes a copy of an Appointment object so
 	 * that it can be stored in a different object reference 
 	 */
-	public Appointment clone() {
+	public Appointment clone(Appointment appointment) {
+		
+		Appointment appointmentCopy = new Appointment();
+		
+		appointmentCopy = appointment;
+		
+		return appointmentCopy;
 		
 	}
 
