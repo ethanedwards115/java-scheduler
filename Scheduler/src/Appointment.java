@@ -28,6 +28,32 @@ public class Appointment {
 	 *     // assign any HPs yet. In clone(), you can just use setAssignedHPs()
 	 * }
 	 */
+	
+	/**
+	 * default constructor for Appointment class
+	 */
+	public Appointment() {
+		
+		// initialises and assigns default values to the variables
+		date = "";
+		startTime = "";
+		endTime = "";
+		type = "";
+		
+		assignedHPs = new ArrayList<HealthProfessional>();
+		
+	}
+	
+	public Appointment(String date, String startTime, String endTime, String type) {
+		
+		this.date = date;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.type = type;
+		
+		assignedHPs = new ArrayList<HealthProfessional>();
+		
+	}
 
 	/**
 	 * @return the date
@@ -103,7 +129,7 @@ public class Appointment {
 	 * the clone method makes a copy of an Appointment object so that it can be
 	 * stored in a different object reference
 	 */
-	public Appointment clone(Appointment appointment) {
+	public Appointment clone() {
 		
 		// Here, you don't need the "appointment" parameter. It should just work on
 		// the object you're calling the method on.
@@ -125,7 +151,25 @@ public class Appointment {
 
 		Appointment appointmentCopy = new Appointment();
 
-		appointmentCopy = appointment;
+		String dateClone = "";
+		String startTimeClone = "";
+		String endTimeClone = "";
+		String typeClone = "";
+		
+		dateClone = date;
+		startTimeClone = startTime;
+		endTimeClone = endTime;
+		typeClone = type;
+		
+		ArrayList<HealthProfessional> arrayClone = new ArrayList<assignedHPs>();
+		
+		for (HealthProfessional hp : assignedHPs) {
+			
+			HealthProfessional hpClone = hp.clone();
+			arrayClone.add(hpClone);
+		}
+		
+		appointmentCopy.setAssignedHPs(arrayClone);
 
 		return appointmentCopy;
 
