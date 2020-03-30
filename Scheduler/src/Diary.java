@@ -16,7 +16,9 @@ public class Diary
 
     public void  display(ArrayList<HealthProfessional> hp, String startDate, String endDate ) 
     {
-       
+       for (Appointment appointment : appointments) {
+            
+        }
     }
     
     public ArrayList<Appointment> search() 
