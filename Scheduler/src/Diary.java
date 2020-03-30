@@ -24,4 +24,21 @@ public class Diary
         return null;
         
     }
+    public Diary clone() {
+
+        Diary diaryClone = new Diary();
+	    ArrayList<Appointment> listCopy = new ArrayList<appointments>();
+
+            for (Appointment app : appointments) {
+			Appointment appCopy;
+                        appCopy = app.clone();
+			listCopy.add(appCopy);
+                        
+    }
+    
+        diaryClone.setAppointments(listCopy);
+	return diaryClone;
+		
+
+}
 }
