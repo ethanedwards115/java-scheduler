@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class HealthProfessional {
     //initialise the variables
 
-    private ArrayList<String> assignedHP; // creates an Array list which will store the details
+    private ArrayList<String> assignedHPs; // creates an Array list which will store the details
     private String name;
     private String profession;
     private String location;
@@ -118,14 +118,14 @@ public class HealthProfessional {
      */
 
     public ArrayList addToList() {
-        ArrayList<String> assignedHP = new ArrayList();
+        ArrayList<String> assignedHPs = new ArrayList();
         Scanner s1 = new Scanner(System.in);
 
         System.out.println("Please enter the name of the Health Professional");
         System.out.println("Please enter the profession of the Health Professional e.g. Doctor/Nurse");
         System.out.println("Please enter the location of where the Health Professional works e.g. Dundee");
-        assignedHP.add(s1.next());
-        return assignedHP;
+        assignedHPs.add(s1.next());
+        return assignedHPs;
     }
 
     /**
@@ -135,9 +135,9 @@ public class HealthProfessional {
     // don't think this method is correct
     public void printList()
     {
-        while (assignedHP != null)
+        while (assignedHPs != null)
         {
-            System.out.print(assignedHP);
+            System.out.print(assignedHPs);
         }
 
         /**
@@ -158,7 +158,9 @@ public class HealthProfessional {
                 printWriter.print(addToList());
             }
             printWriter.close();
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             System.out.println("Sorry an error occurred");
         }
     }
