@@ -154,6 +154,9 @@ public class HealthProfessional {
             fileOutputStream = new FileOutputStream("healthprofessionals.txt"); // This will save the array list of health professionals
             printWriter = new PrintWriter(fileOutputStream);
             printWriter.println("The is the file contains the records of the Health Professionals");
+            {
+                printWriter.print(addToList());
+            }
             printWriter.close();
         } catch (IOException e) {
             System.out.println("Sorry an error occurred");
