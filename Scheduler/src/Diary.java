@@ -57,16 +57,21 @@ public class Diary {
  * @return 
  * 
  */
-    public ArrayList<Appointment> search() {
+    public ArrayList<Appointment> search(ArrayList<HealthProfessional> hp) {
         Scanner s = new Scanner(System.in);
-        ArrayList<HealthProfessional> searchHp;
         String start;
         String end;
+        String requiredHPs;
+        
+       
         System.out.println("Please enter the start date for when you wish your appointment to be.");
         start = s.nextLine();
         System.out.println("Please enter the end date for when you wish your appointment to be.");
         end = s.nextLine();
-        System.out.println("Please enter the health professionals needed for this appointment.");
+        System.out.println("Please enter the health professionals needed for this appointment, seperated by commas");
+        requiredHPs = s.nextLine();
+        
+        String[] searchHP = requiredHPs.split(",");
         
         
         return null;
