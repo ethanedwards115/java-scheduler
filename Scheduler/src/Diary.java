@@ -52,13 +52,20 @@ public class Diary {
     
 /**
  *Search method to search diary for free appointment slots
- * @param hp health professionals required
- * @param start start date for when appointment can be
- * @param end end date for when appointment can be
+ * 
  * @return 
  * 
  */
-    public ArrayList<Appointment> search(ArrayList<HealthProfessional> hp, String start, String end) {
+    public ArrayList<Appointment> search() {
+        Scanner s = new Scanner(System.in);
+        ArrayList<HealthProfessional> searchHp;
+        String start;
+        String end;
+        System.out.println("Please enter the start date for when you wish your appointment to be.");
+        start = s.nextLine();
+        System.out.println("Please enter the end date for when you wish your appointment to be.");
+        end = s.nextLine();
+        System.out.println("Please enter the health professionals needed for this appointment.");
         
         
         return null;
