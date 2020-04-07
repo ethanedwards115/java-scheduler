@@ -36,10 +36,10 @@ public class Diary {
  */
     public void  display(ArrayList<HealthProfessional> hp, String start, String end, String type ) {
         for (Appointment appointment : appointments) {
-            appointment.getStartTime(start);
-            appointment.getEndTime(end);
-            appointment.getAssignedHPs(hp);
-            appointment.getType(type);
+            start = appointment.getStartTime();
+            end = appointment.getEndTime();
+            hp = appointment.getAssignedHPs();
+            type = appointment.getType();
             
             System.out.println("Appointment");
             System.out.println("Start time: " + start);
