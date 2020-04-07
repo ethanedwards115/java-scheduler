@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 
 /**
+ * the Appointment class contains all the methods and data relating to the appointments,
+ * including the clone() method for cloning Appointment objects
+ *
  * @author Eilidh Strachan
  * @version 07/04/2020
  *
