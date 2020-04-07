@@ -1,5 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
 
 /**
  *
@@ -85,9 +89,18 @@ public class Diary {
         
         String[] searchHP = requiredHPs.split(",");
         
+         
         for (int i = 0; i < appointments.size(); i++) {
-            
+            for (int q = 0; q < appointments.getAssignedHPs.size(); q++ ) {
+                if (Arrays.asList(appointments.getAssignedHPs()).contains(searchHP)) {
+                    
+            }
         }
+        {
+                
+            }
+        }
+        
         
         return null;
         
