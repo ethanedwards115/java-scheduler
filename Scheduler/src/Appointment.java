@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 /**
  * @author Eilidh Strachan
- * @version 16/3/2020
+ * @version 07/04/2020
  *
  */
 public class Appointment {
@@ -12,22 +12,6 @@ public class Appointment {
 	private String endTime;
 	private String type;
 	private ArrayList<HealthProfessional> assignedHPs;
-
-	// Add a default constructor and a constructor that takes in all the different
-	// data that this class is supposed to store
-	
-	/*
-	 * e.g. ::
-	 * public Appointment() {
-	 *     // initialise variables & assign default values
-	 * }
-	 * 
-	 * public Appointment(String date, String startTime, String endTime, String type) {
-	 *     // set the variables of the object using "this.<name> = <name>" 
-	 *     // note that you only need to initialise the ArrayList, you don't have to
-	 *     // assign any HPs yet. In clone(), you can just use setAssignedHPs()
-	 * }
-	 */
 	
 	/**
 	 * default constructor for Appointment class
@@ -44,8 +28,12 @@ public class Appointment {
 		
 	}
 	
+	/**
+	* constructor that takes in the data that the Appointment class stores
+	*/
 	public Appointment(String date, String startTime, String endTime, String type) {
 		
+		// assigns values to the variables
 		this.date = date;
 		this.startTime = startTime;
 		this.endTime = endTime;
@@ -131,46 +119,38 @@ public class Appointment {
 	 */
 	public Appointment clone() {
 		
-		// Here, you don't need the "appointment" parameter. It should just work on
-		// the object you're calling the method on.
-		
-		// First, clone the strings and save them in new object references
-		
-		// Then, for the ArrayList, make a new ArrayList<HealthProfessional>
-		// and use:
-		// for (HealthProfessional hp : assignedHPs) {
-		//
-		//     HealthProfessional clonedHP = hp.clone()
-		//     clonedArray.add(clonedHP);
-		//}
-		
-		// Use the setAssignedHPs() method to set the assigned HPs of the *CLONE*
-		// to be the cloned array of HPs.
-		
-		// Finally, just return the clone and you should be done
-
+		// creates instance of an Appointment object to store the clone 
 		Appointment appointmentCopy = new Appointment();
 
+		// initialises variables for the cloned data to be stored in
 		String dateClone = "";
 		String startTimeClone = "";
 		String endTimeClone = "";
 		String typeClone = "";
 		
+		// copies the data from the appointment to be cloned into the cloned appointment
 		dateClone = date;
 		startTimeClone = startTime;
 		endTimeClone = endTime;
 		typeClone = type;
 		
+		// creates new arraylist 
 		ArrayList<HealthProfessional> arrayClone = new ArrayList<assignedHPs>();
 		
+		// for each of the assigned health professionals
 		for (HealthProfessional hp : assignedHPs) {
 			
+			// clones the health professional data
 			HealthProfessional hpClone = hp.clone();
+			
+			// adds the cloned health professional data to the clone arraylist 
 			arrayClone.add(hpClone);
 		}
 		
+		// adds the cloned health professional data to the appointment clone
 		appointmentCopy.setAssignedHPs(arrayClone);
 
+		// returns the cloned appointment
 		return appointmentCopy;
 
 	}
