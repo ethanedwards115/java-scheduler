@@ -53,7 +53,7 @@ public class Diary {
     
 /**
  *Search method to search diary for free appointment slots
- * 
+ * @param hp list of health professionals
  * @return 
  * 
  */
@@ -62,7 +62,8 @@ public class Diary {
         String start;
         String end;
         String requiredHPs;
-        
+        Date startDate;
+        Date endDate;
        
         System.out.println("Please enter the start date for when you wish your appointment to be.");
         start = s.nextLine();
@@ -71,8 +72,22 @@ public class Diary {
         System.out.println("Please enter the health professionals needed for this appointment, seperated by commas");
         requiredHPs = s.nextLine();
         
+        SimpleDateFormat f = new SimpleDateFormat("dd/mm/yyyy");
+        
+        try {
+            startDate = f.parse(start);
+            endDate = f.parse(end);
+            
+        } catch (ParseException ex) {
+            System.out.println("Incorrect date format. " + ex);
+        }
+        
+        
         String[] searchHP = requiredHPs.split(",");
         
+        for (int i = 0; i < appointments.size(); i++) {
+            
+        }
         
         return null;
         
