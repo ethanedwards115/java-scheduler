@@ -107,7 +107,7 @@ public class Diary {
             printWriter = new PrintWriter(fileOutputStream);
             printWriter.println("The is the file contains the records of the Health Professionals");
             {
-                printWriter.print(display(ArrayList<HealthProfessional> hp, String start, String end, String type));
+                printWriter.print(display(hp, start, end, type));
             }
             printWriter.close();
         }
