@@ -138,7 +138,7 @@ public class Appointment {
 		typeClone = type;
 		
 		// creates new arraylist 
-		ArrayList<HealthProfessional> arrayClone = new ArrayList<assignedHPs>();
+		ArrayList<HealthProfessional> arrayClone = new ArrayList<HealthProfessional>();
 		
 		// for each of the assigned health professionals
 		for (HealthProfessional hp : assignedHPs) {
@@ -156,6 +156,14 @@ public class Appointment {
 		// returns the cloned appointment
 		return appointmentCopy;
 
+	}
+	
+	@Override
+	public String toString() {
+		
+		String toString = date + ";" + startTime + ";" + endTime + ";" + type + "\n";
+		
+		return toString;
 	}
 
 }

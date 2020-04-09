@@ -28,6 +28,22 @@ public class HistoryStack {
 		
 		for(HealthProfessional hp : newList) {
 			
+			copyList.add(hp.clone());
+		}
+		
+		if(isEmpty()) {
+			head = new StackNode<ArrayList<HealthProfessional>>(copyList);
+		
+		} else {
+			
+			StackNode<ArrayList<HealthProfessional>> current = head;
+			
+			do {
+				current.getNext();
+				
+			} while (current != null);
+			
+			current = new StackNode<ArrayList<HealthProfessional>>(copyList);
 		}
 	}
 	

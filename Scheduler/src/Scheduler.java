@@ -1,4 +1,6 @@
-
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 /**
@@ -21,6 +23,39 @@ public class Scheduler {
 	}
 
 	/**
+	 * Get the user to add a new health professional to the scheduler
+	 */
+	public void userAddHP() {
+
+		HealthProfessional newHP;
+
+		String name;
+		String profession;
+		String location;
+
+		System.out.println();
+		System.out.print("Enter the name of the health professional to add: ");
+		name = Menu.SCANNER.nextLine();
+
+		System.out.println();
+		System.out.print("Enter the profession of the health professional to add: ");
+		profession = Menu.SCANNER.nextLine();
+
+		System.out.println();
+		System.out.print("Enter the office/location of the health professional to add: ");
+		location = Menu.SCANNER.nextLine();
+
+		newHP = new HealthProfessional(name, profession, location);
+
+		if (addHP(newHP)) {
+			return;
+
+		} else {
+			// bruh wtf happened lmao
+		}
+	}
+
+	/**
 	 * Add a new health professional to the Scheduler
 	 * 
 	 * @param hp The health professional to add
@@ -39,17 +74,15 @@ public class Scheduler {
 	 * @throws IndexOutOfBoundsException
 	 */
 	public void deleteHP(int index) throws IndexOutOfBoundsException {
+
 		history.push(hps);
 		hps.remove(index);
 	}
 
 	/**
 	 * Edit the details of a health professional
-	 * 
-	 * @param index The index of the health professional whose details are to be
-	 *              edited
 	 */
-	public void editHP(int index) {
+	public void editHP() {
 		// TODO some stuff that allows the user to edit the details of a health
 		// professional
 	}
@@ -66,5 +99,38 @@ public class Scheduler {
 	 */
 	public void undo() {
 		hps = history.pop();
+	}
+	
+	
+	public void saveToDisk() {
+		
+		FileOutputStream fos;
+		PrintWriter pw;
+		
+		ArrayList<Appointment> apps;
+		
+		try {
+			
+			fos = new FileOutputStream("datastore.txt");
+			pw = new PrintWriter(fos);
+			
+			for (HealthProfessional hp : hps) {
+				
+				pw.print(hp);
+				
+				apps = hp.getDiary().getAppointments();
+				
+				for(Appointment app : apps) {
+					
+					pw.print(app);
+				}
+			}
+			
+			pw.close();
+			fos.close();
+		
+		} catch(IOException ioe) {
+			
+		}
 	}
 }

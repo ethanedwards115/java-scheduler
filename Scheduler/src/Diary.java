@@ -97,55 +97,7 @@ public class Diary {
 
     }
 
-    public void saveToDisk()
-    {
-        FileOutputStream fileOutputStream;
-        PrintWriter printWriter;
-
-        try {
-            fileOutputStream = new FileOutputStream("diary of our me.txt"); // This will save the array list of health professionals
-            printWriter = new PrintWriter(fileOutputStream);
-            printWriter.println("The is the file contains the records of the Health Professionals");
-            {
-                printWriter.print(display(hp, start, end, type));
-            }
-            printWriter.close();
-        }
-        catch (IOException e)
-        {
-            System.out.println("Sorry an error occurred");
-        }
-    }
-
-    /**
-     * Method which will load a file from the disk
-     */
-
-    // don't know if this works
-    public void loadFromDisk()
-    {
-        FileReader fileReader;
-        BufferedReader bufferedReader;
-        String nextLine;
-
-        try
-        {
-            fileReader = new FileReader("diary.txt"); // Will load the file containing the array list
-            bufferedReader = new BufferedReader(fileReader);
-
-            nextLine = bufferedReader.readLine();
-            while (nextLine != null) ;
-            {
-                System.out.println(nextLine);
-                nextLine = bufferedReader.readLine();
-            }
-            bufferedReader.close();
-        } catch (IOException e)
-        {
-            System.out.println("Sorry there is an error");
-        }
-    }
-
+    
 
     /**
      *Method to make a copy of a Diary object
