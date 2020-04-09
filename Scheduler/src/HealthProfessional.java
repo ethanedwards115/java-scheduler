@@ -1,153 +1,144 @@
-import java.io.IOException;
-import java.util.ArrayList;
-import java.io.FileOutputStream;
-import java.io.PrintWriter;
-import java.io.FileReader;
-import java.io.BufferedReader;
-import java.util.Scanner;
-
 /**
- * A class which will allow the user the store the details of Health
- * Professionals using an Array List
+ * A class which will allow the user the store the details of Health Professionals using an Array List
  *
  * @author Aidan Dolan
  * @version 1.0
  */
 
 public class HealthProfessional {
-	// initialise the variables
+    //initialise the variables
 
-	private String name;
-	private String profession;
-	private String location;
-	private Diary diary;
+    private String name;
+    private String profession;
+    private String location;
+    private Diary diary;
 
-	/**
-	 * Constructor to set the variables to null
-	 */
+    /**
+     * Constructor to set the variables to null
+     */
 
-	public HealthProfessional() {
-		name = "";
-		profession = "";
-		location = "";
-		diary = new Diary();
-	}
+    public HealthProfessional() {
+        name = "";
+        profession = "";
+        location = "";
+        diary = new Diary();
+    }
+    
+    public HealthProfessional(String name, String profession, String location) {
+    	this();
+    	
+    	setName(name);
+    	setProfession(profession);
+    	setLocation(location);
+    }
 
-	public HealthProfessional(String name, String profession, String location) {
-		this();
+    /**
+     * Mutator to get the name of the professional
+     *
+     * @return name
+     */
 
-		setName(name);
-		setProfession(profession);
-		setLocation(location);
-	}
+    public String getName() {
+        return name;
+    }
 
-	/**
-	 * Mutator to get the name of the professional
-	 *
-	 * @return name
-	 */
+    /**
+     * Accessor to set the name of the Health Professional
+     *
+     * @param name
+     */
 
-	public String getName() {
-		return name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	/**
-	 * Accessor to set the name of the Health Professional
-	 *
-	 * @param name
-	 */
+    /**
+     * Mutator to get the profession of the Health Professional
+     *
+     * @return
+     */
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getProfession() {
+        return profession;
+    }
 
-	/**
-	 * Mutator to get the profession of the Health Professional
-	 *
-	 * @return
-	 */
+    /**
+     * Accessor to set the profession of the Health Professional
+     *
+     * @param profession
+     */
 
-	public String getProfession() {
-		return profession;
-	}
+    public void setProfession(String profession) {
+        this.profession = profession;
+    }
 
-	/**
-	 * Accessor to set the profession of the Health Professional
-	 *
-	 * @param profession
-	 */
+    /**
+     * Mutator to get the location of where the Health Professional works
+     *
+     * @return
+     */
 
-	public void setProfession(String profession) {
-		this.profession = profession;
-	}
+    public String getLocation() {
+        return location;
+    }
 
-	/**
-	 * Mutator to get the location of where the Health Professional works
-	 *
-	 * @return
-	 */
+    /**
+     * Accessor to set the location of where the Health Professional works
+     *
+     * @param location
+     */
 
-	public String getLocation() {
-		return location;
-	}
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
-	/**
-	 * Accessor to set the location of where the Health Professional works
-	 *
-	 * @param location
-	 */
+    /**
+     * Mutator to get the diary
+     *
+     * @return diary
+     */
 
-	public void setLocation(String location) {
-		this.location = location;
-	}
+    public Diary getDiary() {
+        return diary;
+    }
 
-	/**
-	 * Mutator to get the diary
-	 *
-	 * @return diary
-	 */
+    /**
+     * Accessor to set the diary
+     *
+     * @param diary
+     */
 
-	public Diary getDiary() {
-		return diary;
-	}
+    public void setDiary(Diary diary) {
+        this.diary = diary;
+    }
 
-	/**
-	 * Accessor to set the diary
-	 *
-	 * @param diary
-	 */
+    /**
+     * A method which will create a copy of a health professional object
+     *
+     * @return
+     */
 
-	public void setDiary(Diary diary) {
-		this.diary = diary;
-	}
+    public HealthProfessional clone() {
 
-	/**
-	 * A method which will create a copy of a health professional object
-	 *
-	 * @return
-	 */
+    	HealthProfessional clonedHP;
+    	
+    	String clonedName = String.copyValueOf(name.toCharArray());
+    	String clonedProf = String.copyValueOf(profession.toCharArray());
+    	String clonedLoc = String.copyValueOf(location.toCharArray());
+    	
+    	clonedHP = new HealthProfessional(clonedName, clonedProf, clonedLoc);
+    	
+    	clonedHP.setDiary(diary);
+    	
+        return clonedHP;
 
-	public HealthProfessional clone() {
-
-		HealthProfessional clonedHP;
-
-		String clonedName = String.copyValueOf(name.toCharArray());
-		String clonedProf = String.copyValueOf(profession.toCharArray());
-		String clonedLoc = String.copyValueOf(location.toCharArray());
-
-		clonedHP = new HealthProfessional(clonedName, clonedProf, clonedLoc);
-
-		clonedHP.setDiary(diary);
-
-		return clonedHP;
-
-	}
-
-	@Override
-	public String toString() {
-
-		String toString = name + ";" + profession + ";" + location + "\n";
-
-		return toString;
-	}
+    }
+    
+    @Override
+    public String toString() {
+    	
+    	String toString = name + ";" + profession + ";" + location + "\n";
+    	
+    	return toString;
+    }
 }

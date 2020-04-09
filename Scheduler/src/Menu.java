@@ -12,7 +12,7 @@ public class Menu {
 		System.out.println("1 - Add a health professional");
 		System.out.println("2 - Edit the details of a health professional");
 		System.out.println("3 - Delete a health professional");
-		System.out.println("4 - Display diary entries for an individual health professional");
+		System.out.println("4 - Display all diary entries");
 		System.out.println("5 - Save diary entries to disk");
 		System.out.println("6 - Restore diary entries from disk");
 		System.out.println("7 - Schedule an appointment");
@@ -43,12 +43,15 @@ public class Menu {
 			break;
 
 		case "4":
+			scheduler.display();
 			break;
 
 		case "5":
+			scheduler.saveToDisk();
 			break;
 
 		case "6":
+			scheduler.loadFromDisk();
 			break;
 
 		case "7":

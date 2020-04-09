@@ -11,112 +11,117 @@ import java.util.Scanner;
  * @version 05/04/20
  */
 public class Diary {
-    private ArrayList<Appointment> appointments;
+	private ArrayList<Appointment> appointments;
+	
+	public Diary() {
+		appointments = new ArrayList<Appointment>();
+	}
 
+	/**
+	 * Accessor method for appointments
+	 * 
+	 * @return appointments
+	 */
+	public ArrayList<Appointment> getAppointments() {
+		return appointments;
+	}
 
-    /**
-     *Accessor method for appointments
-     * @return appointments
-     */
-    public ArrayList<Appointment> getAppointments() {
-        return appointments;
-    }
+	/**
+	 * Mutator method for appointments
+	 * 
+	 * @param appointments the list of appointments
+	 *
+	 */
+	public void setAppointments(ArrayList<Appointment> appointments) {
+		this.appointments = appointments;
+	}
 
-    /**
-     *Mutator method for appointments
-     * @param appointments the list of appointments
-     *
-     */
-    public void setAppointments(ArrayList<Appointment> appointments) {
-        this.appointments = appointments;
-    }
+	/**
+	 * Displays the contents of the diary
+	 */
+	public void display() {
+		
+		String start;
+		String end;
+		ArrayList<HealthProfessional> hp;
+		String type;
+		
+		for (Appointment appointment : appointments) {
+			start = appointment.getStartTime();
+			end = appointment.getEndTime();
+			hp = appointment.getAssignedHPs();
+			type = appointment.getType();
 
-    /**
-     *Displays the contents of the diary
-     * @param hp list of health professionals
-     * @param start start time of appointment
-     * @param end end time of appointment
-     * @param type type of appointment taking place
-     */
-    public void  display(ArrayList<HealthProfessional> hp, String start, String end, String type ) {
-        for (Appointment appointment : appointments) {
-            appointment.getStartTime();
-            appointment.getEndTime();
-            appointment.getAssignedHPs();
-            appointment.getType();
+			System.out.println("Appointment");
+			System.out.println("Start time: " + start);
+			System.out.println("End time: " + end);
+			System.out.println("Health professionals present: " + hp);
+			System.out.println("Appointment type: " + type);
+		}
 
-            System.out.println("Appointment");
-            System.out.println("Start time: " + start);
-            System.out.println("End time: " + end);
-            System.out.println("Health professionals present: " + hp);
-            System.out.println("Appointment type: " + type);
-        }
+	}
 
+	/**
+	 * Search method to search diary for free appointment slots
+	 * 
+	 * @param hp list of health professionals
+	 * @return
+	 *
+	 */
+	public ArrayList<Appointment> search(ArrayList<HealthProfessional> hp) {
+		Scanner s = new Scanner(System.in);
+		String start;
+		String end;
+		String requiredHPs;
+		Date startDate;
+		Date endDate;
 
-    }
+		System.out.println("Please enter the start date for when you wish your appointment to be.");
+		start = s.nextLine();
+		System.out.println("Please enter the end date for when you wish your appointment to be.");
+		end = s.nextLine();
+		System.out.println("Please enter the health professionals needed for this appointment, seperated by commas");
+		requiredHPs = s.nextLine();
 
-    /**
-     *Search method to search diary for free appointment slots
-     * @param hp list of health professionals
-     * @return
-     *
-     */
-    public ArrayList<Appointment> search(ArrayList<HealthProfessional> hp) {
-        Scanner s = new Scanner(System.in);
-        String start;
-        String end;
-        String requiredHPs;
-        Date startDate;
-        Date endDate;
+		SimpleDateFormat f = new SimpleDateFormat("dd/mm/yyyy");
 
-        System.out.println("Please enter the start date for when you wish your appointment to be.");
-        start = s.nextLine();
-        System.out.println("Please enter the end date for when you wish your appointment to be.");
-        end = s.nextLine();
-        System.out.println("Please enter the health professionals needed for this appointment, seperated by commas");
-        requiredHPs = s.nextLine();
+		try {
+			startDate = f.parse(start);
+			endDate = f.parse(end);
 
-        SimpleDateFormat f = new SimpleDateFormat("dd/mm/yyyy");
+		} catch (ParseException ex) {
+			System.out.println("Incorrect date format. " + ex);
+		}
 
-        try {
-            startDate = f.parse(start);
-            endDate = f.parse(end);
+		String[] searchHP = requiredHPs.split(",");
 
-        } catch (ParseException ex) {
-            System.out.println("Incorrect date format. " + ex);
-        }
+		for (int i = 0; i < appointments.size(); i++) {
 
+		}
 
-        String[] searchHP = requiredHPs.split(",");
+		return null;
 
-        for (int i = 0; i < appointments.size(); i++) {
+	}
 
-        }
+	/**
+	 * Method to make a copy of a Diary object
+	 * 
+	 * @return diaryClone
+	 */
+	public Diary clone() {
 
-        return null;
+		Diary diaryClone = new Diary();
+		ArrayList<Appointment> listCopy = new ArrayList<Appointment>();
 
-    }
+		for (Appointment app : appointments) {
+			Appointment appCopy;
+			appCopy = app.clone();
+			listCopy.add(appCopy);
 
-    
+		}
 
-    /**
-     *Method to make a copy of a Diary object
-     * @return diaryClone
-     */
-    public Diary clone() {
+		diaryClone.setAppointments(listCopy);
+		return diaryClone;
 
-        Diary diaryClone = new Diary();
-        ArrayList<Appointment> listCopy = new ArrayList<Appointment>();
-
-        for (Appointment app : appointments) {
-            Appointment appCopy;
-            appCopy = app.clone();
-            listCopy.add(appCopy);
-
-        }
-
-        diaryClone.setAppointments(listCopy);
-        return diaryClone;
-
-    }
+	}
 }

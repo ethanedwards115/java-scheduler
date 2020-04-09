@@ -1,4 +1,6 @@
+import java.io.BufferedReader;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -100,37 +102,85 @@ public class Scheduler {
 	public void undo() {
 		hps = history.pop();
 	}
-	
-	
+
+	public void display() {
+
+		if (hps != null) {
+			for (HealthProfessional hp : hps) {
+
+				System.out.println(hp);
+				hp.getDiary().display();
+			}
+		}
+	}
+
+	/**
+	 * Save all of the health professionals' data to the disk
+	 */
 	public void saveToDisk() {
-		
+
 		FileOutputStream fos;
 		PrintWriter pw;
-		
+
 		ArrayList<Appointment> apps;
-		
+
 		try {
-			
+
 			fos = new FileOutputStream("datastore.txt");
 			pw = new PrintWriter(fos);
-			
+
 			for (HealthProfessional hp : hps) {
-				
+
 				pw.print(hp);
-				
+
 				apps = hp.getDiary().getAppointments();
-				
-				for(Appointment app : apps) {
-					
+
+				for (Appointment app : apps) {
 					pw.print(app);
 				}
 			}
-			
 			pw.close();
 			fos.close();
-		
-		} catch(IOException ioe) {
-			
+
+		} catch (IOException ioe) {
+
+		}
+	}
+
+	public void loadFromDisk() {
+		int counter = 0;
+
+		hps = new ArrayList<HealthProfessional>();
+
+		FileReader fr;
+		BufferedReader br;
+
+		String nextLine;
+		String[] sep;
+
+		try {
+			fr = new FileReader("datastore.txt");
+			br = new BufferedReader(fr);
+
+			do {
+				nextLine = br.readLine();
+
+				sep = nextLine.split(";");
+
+				// 3 means its a health professional
+				if (sep.length == 3) {
+					hps.add(new HealthProfessional(sep[0], sep[1], sep[2]));
+
+				} else {
+					hps.get(counter).getDiary().getAppointments().add(new Appointment(sep[0], sep[1], sep[2], sep[3]));
+
+					counter++;
+				}
+
+			} while (nextLine != null);
+
+		} catch (IOException ioe) {
+
 		}
 	}
 }
