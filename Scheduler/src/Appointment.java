@@ -123,7 +123,7 @@ public class Appointment {
 	public Appointment clone() {
 		
 		// creates instance of an Appointment object to store the clone 
-		Appointment appointmentCopy = new Appointment();
+		Appointment appointmentCopy;
 
 		// initialises variables for the cloned data to be stored in
 		String dateClone = "";
@@ -132,10 +132,10 @@ public class Appointment {
 		String typeClone = "";
 		
 		// copies the data from the appointment to be cloned into the cloned appointment
-		dateClone = date;
-		startTimeClone = startTime;
-		endTimeClone = endTime;
-		typeClone = type;
+		dateClone = String.copyValueOf(date.toCharArray());
+		startTimeClone = String.copyValueOf(startTime.toCharArray());
+		endTimeClone = String.copyValueOf(endTime.toCharArray());
+		typeClone = String.copyValueOf(type.toCharArray());
 		
 		// creates new arraylist 
 		ArrayList<HealthProfessional> arrayClone = new ArrayList<HealthProfessional>();
@@ -149,6 +149,8 @@ public class Appointment {
 			// adds the cloned health professional data to the clone arraylist 
 			arrayClone.add(hpClone);
 		}
+		
+		appointmentCopy = new Appointment(dateClone, startTimeClone, endTimeClone, typeClone);
 		
 		// adds the cloned health professional data to the appointment clone
 		appointmentCopy.setAssignedHPs(arrayClone);
